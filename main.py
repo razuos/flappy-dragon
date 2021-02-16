@@ -11,15 +11,16 @@ myCharacter = Character(win, 100, 500)
 
 win.getMouse()
 myBarrier.move(-30, 0)
-# Na verdade é preciso checar se colide com o resto da barreira também
-print("is colliding: ", isColliding(myCharacter.character, myBarrier.top))
+print("is colliding: ", isColliding(myCharacter.collisionBox, myBarrier.collisionBox))
 
 win.getMouse()
 myBarrier.move(-30, 0)
-print("is colliding: ", isColliding(myCharacter.character, myBarrier.top))
+print("is colliding: ", isColliding(myCharacter.collisionBox, myBarrier.collisionBox))
 
 win.getMouse()
-myBarrier.destroy()
+del myCharacter
+del myBarrier
+
 
 win.getMouse()
 win.close()
