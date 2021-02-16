@@ -1,22 +1,25 @@
 from lib.graphics import *
+from gameObjects.barrier import Barrier
+from gameObjects.character import Character
+from collision import isColliding
 
-win = GraphWin("Flappy Bird", 400, 800)
-pt = Point(200, 400)
-pt2 = Point(200, 300)
-pt3 = Point(200, 200)
-pt4 = Point(200, 600)
-
-
+win = GraphWin("Flappy Bird", 400, 600)
 win.setBackground(color_rgb(110, 175, 250))
 
-bottom = Image(pt, "./assets/barrier/bottom.png")
-middle = Image(pt2, "./assets/barrier/middle.png")
-top = Image(pt3, "./assets/barrier/top.png")
-character = Image(pt4, "./assets/character/character.png")
+myBarrier = Barrier(win, 300, 1, False)
+myCharacter = Character(win, 100, 500)
 
-top.draw(win)
-middle.draw(win)
-bottom.draw(win)
-character.draw(win)
+win.getMouse()
+myBarrier.move(-30, 0)
+# Na verdade é preciso checar se colide com o resto da barreira também
+print("is colliding: ", isColliding(myCharacter.character, myBarrier.top))
+
+win.getMouse()
+myBarrier.move(-30, 0)
+print("is colliding: ", isColliding(myCharacter.character, myBarrier.top))
+
+win.getMouse()
+myBarrier.destroy()
+
 win.getMouse()
 win.close()
