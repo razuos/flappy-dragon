@@ -1,26 +1,38 @@
 from lib.graphics import *
-from gameObjects.barrier import Barrier
 from gameObjects.character import Character
+from gameObjects.barrier import Barrier
 from collision import isColliding
 
-win = GraphWin("Flappy Bird", 400, 600)
+win = GraphWin("Flappy Bird", 400, 600, autoflush=False)
 win.setBackground(color_rgb(110, 175, 250))
+ 
+myPlayer = Character(win, win.getWidth() / 2, win.getHeight() / 2)
+myBarrier = Barrier(win, win.getWidth() / 2, 1, True)
 
-myBarrier = Barrier(win, 300, 1, False)
-myCharacter = Character(win, 100, 500)
+collided = False
 
-win.getMouse()
-myBarrier.move(-30, 0)
-print("is colliding: ", isColliding(myCharacter.collisionBox, myBarrier.collisionBox))
+while collided == False:
+    k = win.checkKey()
 
-win.getMouse()
-myBarrier.move(-30, 0)
-print("is colliding: ", isColliding(myCharacter.collisionBox, myBarrier.collisionBox))
+    dy = 0
+    dx = 0
 
-win.getMouse()
-del myCharacter
-del myBarrier
+    if k == "space":
+      dy -= 30
+    else:
+      dy += .5
+
+    time.sleep(.005)
+    myPlayer.move(dx, dy)
+
+    
+    if (isColliding(myPlayer.collisionBox, myBarrier.collisionBox)):
+      print("COLIDINDO")
+    else:
+      print("Não está colidindo")
 
 
-win.getMouse()
+
+win.close()
+
 win.close()

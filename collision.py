@@ -18,4 +18,10 @@ def normalizeCollisionBox(collisionBox: Rectangle):
   return Rectangle(P1, P2)
 
 def isColliding(box1: Rectangle, box2: Rectangle):
-  return (box1.p1.x <= box2.p2.x and box1.p2.x >= box2.p1.x and box1.p1.x <= box2.p2.y and box1.p2.y >= box2.p1.y)
+  if (box1.p1.x <= box2.p2.x):
+    if (box1.p2.x >= box2.p1.x):
+      if (box1.p1.y <= box2.p2.y):
+        if (box1.p2.y >= box2.p1.y):
+          return True
+
+  return False

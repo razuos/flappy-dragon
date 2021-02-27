@@ -17,8 +17,8 @@ class Character:
     P2 = Point(P2X, P2Y)
 
     collisionBox = normalizeCollisionBox(Rectangle(P1, P2))
-    collisionBox.setFill("green")
-    collisionBox.draw(self.window)
+    # collisionBox.setFill("green")
+    # collisionBox.draw(self.window)
 
     self.collisionBox = collisionBox
 
