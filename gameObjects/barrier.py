@@ -40,7 +40,7 @@ class Barrier:
     if (self.isUpsideDown):
       top = Image(Point(self.x, reference.anchor.getY() + reference.getHeight()), "./assets/barrier/top-inverted.png")
     else:
-      top = Image(Point(self.x, reference.anchor.getY() - reference.getHeight()), "./assets/barrier/top-inverted.png")
+      top = Image(Point(self.x, reference.anchor.getY() - reference.getHeight()), "./assets/barrier/top.png")
 
     top.draw(self.window)
     self.objects.append(top)
